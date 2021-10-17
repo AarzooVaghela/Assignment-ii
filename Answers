@@ -1,0 +1,320 @@
+#include<stdio.h>
+
+#include<string.h>
+int main()
+{
+int a,b,sum,multiplication;
+char roman1[30],roman2[30];
+int length,d[30],d2[30];
+int sys,deci=0,deci2=0;
+long binary1, binary2;
+char ar1[1000],ar2[1000];
+int binaryprod = 0;;
+int i = 0, remainder = 0, s[20];
+int digit, factor = 1;
+long multiply =0;
+int b1,b2,count;
+int add,mul,l1,l2;
+printf("Enter the system you want to use for multiplication and addition\n");
+printf("For Hindu/Arabic Enter 1\n For The Roman system Enter 2\n For The binary Enter 3\n For unary Enter 4\n"); 
+scanf("%d",&sys);
+switch(sys){
+case 1:
+printf("Enter the 1st number you want:");
+scanf("%d",&a);
+printf("\nEnter the 2nd number you want:");
+scanf("%d",&b);
+printf("\nSum is equal to %d and multiplication is equal to %d",a+b,a*b);
+break;
+case 2: 
+printf("Enter 1st Roman numeral:");
+scanf("%s",&roman1);
+length=strlen(roman1); 
+for(i=0;i<length;i++)
+{
+switch(roman1[i])
+{ 
+case 'm': 
+case 'M':
+d[i]=1000;
+break; 
+case 'd':
+case 'D':
+d[i]= 500;
+break;
+case 'c':
+case 'C': 
+d[i]= 100;
+break; 
+case 'l': 
+case 'L':
+d[i]= 50;
+break; 
+case 'x': 
+case 'X': 
+d[i]= 10;
+break;
+case 'v':
+case 'V':
+d[i]= 5; 
+break;
+case 'i':
+case 'I': 
+d[i]= 1; } }
+for(i=0;i<length;i++){ 
+if(i==length-1 || d[i]>=d[i+1]) 
+deci += d[i]; 
+else
+deci -= d[i];
+}
+printf("Enter a Roman numeral:"); 
+scanf("%s",roman2);
+length=strlen(roman2); 
+for(i=0;i<length;i++)
+{
+switch(roman2[i])
+{ 
+case 'm': 
+case 'M':
+d2[i]=1000;
+break; 
+case 'd':
+case 'D':
+d2[i]= 500;
+break;
+case 'c':
+case 'C': 
+d2[i]= 100;
+break; 
+case 'l': 
+case 'L':
+d2[i]= 50;
+break; 
+case 'x': 
+case 'X': 
+d2[i]= 10;
+break;
+case 'v':
+case 'V':
+d2[i]= 5; 
+break;
+case 'i':
+case 'I': 
+d2[i]= 1; } }
+for(i=0;i<length;i++){ 
+if(i==length-1 || d2[i]>=d2[i+1]) 
+deci2 += d2[i]; 
+else
+deci2 -= d2[i];
+}
+int sum,multi;
+sum=deci+deci2;
+
+int rem; 
+printf("Sum of the numerals is:");
+while(sum!= 0)
+{ 
+if (deci>= 1000) 
+{
+printf("m"); 
+sum -= 1000;
+}
+else if (sum >= 900) 
+{
+printf("cm"); 
+sum-= 900; 
+} 
+else if (sum >= 500)
+{ printf("d"); 
+sum -= 500; 
+} 
+else if (sum >= 400) 
+{ 
+printf("cd"); 
+sum-= 400; 
+}
+else if (sum >= 100) 
+{ printf("c");
+sum-= 100; } 
+else if (sum>= 90)
+{ printf("xc");
+sum -= 90; } 
+else if (sum >= 50)
+{ printf("l"); 
+sum -= 50; 
+} 
+else if (sum>= 40) 
+{ 
+printf("xl");
+sum-= 40; 
+} 
+else if (sum>= 10)
+{ 
+printf("x"); 
+sum-= 10; }
+else if (sum >= 9)
+{ 
+printf("ix"); 
+sum -= 9; 
+}
+else if (sum >= 5)
+{
+printf("v"); 
+sum-= 5;
+} 
+else if (sum >= 4) 
+{ 
+printf("iv");
+sum -= 4; 
+} 
+else if (sum >= 1)
+{ printf("i"); 
+sum -= 1; 
+} } 
+multi=deci*deci2; 
+printf("\nproduct of the numerals is:");
+
+while(multi!= 0)
+{ 
+if (multi>= 1000) 
+{
+printf("m"); 
+multi -= 1000;
+}
+else if (multi >= 900) 
+{
+printf("cm"); 
+multi-= 900;
+} 
+else if (multi >= 500)
+{ printf("d"); 
+multi -= 500; 
+} 
+else if (multi >= 400) 
+{ 
+printf("cd"); 
+multi-= 400; 
+}
+else if (multi >= 100) 
+{ printf("c");
+multi-= 100; } 
+else if (multi>= 90)
+{ printf("xc");
+multi -= 90; } 
+else if (multi>= 50)
+{ printf("l"); 
+multi -= 50; 
+} 
+else if (multi>= 40) 
+{ 
+printf("xl");
+multi-= 40; 
+} 
+else if (multi>= 10)
+{ 
+printf("x"); 
+multi-= 10; }
+else if (multi >= 9)
+{ 
+printf("ix"); 
+multi -= 9; 
+}
+else if (multi >= 5)
+{
+printf("v"); 
+multi-= 5;
+}
+else if (multi >= 4) 
+{ 
+printf("iv");
+multi-= 4; 
+} 
+else if (multi >= 1)
+{ printf("i"); 
+multi -= 1; 
+} }
+break;
+case 3:
+{{
+printf("Enter the first binary number: ");
+scanf("%ld", &binary1);
+b1=binary1;
+printf("Enter the second binary number: ");
+scanf("%ld", &binary2);
+b2=binary2;
+while (binary1 != 0 || binary2 != 0)
+{
+s[i++] =(binary1 % 10 + binary2 % 10 + remainder) % 2;
+remainder =(binary1 % 10 + binary2 % 10 + remainder) / 2;
+binary1 = binary1 / 10;
+binary2 = binary2 / 10;
+}
+if (remainder != 0)
+s[i++] = remainder;
+--i;
+printf("\nSum of two binary numbers is: ");
+while (i >= 0)
+printf("%d", s[i--]);}
+while (b2 != 0)
+
+{
+
+digit = b2 % 10;
+
+if (digit == 1)
+
+{
+
+b1 = b1 * factor;}
+
+else
+
+b1 = b1 * factor;
+
+b2 = b2 / 10;
+
+factor = 10;
+
+}
+
+printf("\nProduct of two binary numbers: %ld", multiply);
+}
+{
+while (b1 != 0 || b2 != 0)
+{
+s[i++] =(b1 % 10 + b2 % 10 + remainder) % 2;
+remainder =(b1 % 10 + b2 % 10 + remainder) / 2;
+
+b1 = b1 / 10;
+
+b2 = b2 / 10;
+
+}
+if (remainder != 0)
+s[i++] = remainder;
+--i;
+while (i >= 0)
+binaryprod = binaryprod * 10 + s[i--];
+printf("%d",binaryprod);
+
+break;}
+case 4:
+  printf("Enter 1st unary numbers:\n");
+    scanf("%s",ar1);
+    printf("Enter the second unary number: ");
+    scanf("%s",ar2);
+     l1=strlen(ar1);
+     l2=strlen(ar2);
+     add=l1+l2;mul=l1*l2;
+     printf("after adding\n");
+     while(add--){
+         printf("1");
+     }
+     printf("\n");
+     printf("after multiplication\n");
+     while(mul--){
+         printf("1");
+     }
+    break;
+}
+return 0;}
